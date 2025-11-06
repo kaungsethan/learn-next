@@ -10,18 +10,26 @@ const Form = ({ tasks, setTasks }) => {
     setNewJob(e.target.value);
   };
 
-  const handlerAddBtn = (e) => {
-    setTasks([
-      ...tasks,
-      { id: tasks.length + 1, taskName: newJob, isDone: false },
-    ]);
-    toast.success("Task added");
-    setNewJob("")
-  };
+const handlerAddBtn = () => {
+  newJob.trim() === ""
+    ? toast.error("Task Required")
+    : (setTasks([
+        ...tasks,
+        { id: tasks.length + 1, taskName: newJob, isDone: false },
+      ]),
+      toast.success("Task added ✅"),
+      setNewJob(""));
+};
+
 
   return (
     <div className="flex justify-center m-10 ">
-      <input className="border-2 mx-2 px-5 py-3" placeholder="Task" onChange={handlerJobInput} value={newJob} />
+      <input
+        className="border-2 mx-2 px-5 py-3"
+        placeholder="Task"
+        onChange={handlerJobInput}
+        value={newJob}
+      />
       <button
         className="border-2 px-2 active:scale-110"
         onClick={handlerAddBtn}
