@@ -1,21 +1,34 @@
+import useToDoStore from "@/store/useToDoStore";
 import toast from "react-hot-toast";
 import { HiOutlineTrash } from "react-icons/hi";
 import { HiOutlineCheckCircle } from "react-icons/hi2";
 import { PiCircleThin } from "react-icons/pi";
 
-const TaskItem = ({ task: { id, taskName, isDone }, setTasks, tasks }) => {
+const TaskItem = ({ task: { id, taskName, isDone } }) => {
+  const deleteTask = useToDoStore((state) => state.deleteTask);
+  const doneTask = useToDoStore((state) => state.doneTask);
+  // const handleDelete = () => {
+  //   setTasks(tasks.filter((task) => id !== task.id));
+  //   toast.success("Task Deleted!");
+  // };
+
+  // const handleDone = () => {
+  //   setTasks(
+  //     tasks.map((task) =>
+  //       task.id === id ? { ...task, isDone: !task.isDone } : task
+  //     )
+  //   );
+  // };
+
   const handleDelete = () => {
-    setTasks(tasks.filter((task) => id !== task.id));
+    deleteTask(id);
     toast.success("Task Deleted!");
   };
 
   const handleDone = () => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, isDone: !task.isDone } : task
-      )
-    );
+    doneTask(id);
   };
+
   return (
     <div
       className={`m-3 border-2 border-gray-500 p-3 flex justify-between items-center  ${

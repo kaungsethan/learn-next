@@ -6,12 +6,12 @@ import toDoTasks from "@/data/toDoTasks";
 import { useState } from "react";
 
 const TaskSection = () => {
-  const [tasks,setTasks] = useState(toDoTasks)
+  // const [tasks,setTasks] = useState(toDoTasks)
   return (
     <section className="m-3">
       <Header />
-      <TaskList tasks={tasks} setTasks={setTasks} />
-      <Form tasks={tasks} setTasks={setTasks} />
+      <TaskList />
+      <Form />
     </section>
   );
 };

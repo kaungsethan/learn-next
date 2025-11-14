@@ -5,8 +5,8 @@ const Home = () => {
 
   return (
     <div className="m-3">
-      {/* <TaskSection /> */}
-      <CountSection />
+      <TaskSection />
+      {/* <CountSection /> */}
     </div>
   );
 };
